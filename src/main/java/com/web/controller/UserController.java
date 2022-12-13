@@ -3,7 +3,6 @@ package com.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.service.UserService;
 import com.web.vo.UserVo;
@@ -26,16 +25,19 @@ public class UserController {
 	
 	//로그인
 	@GetMapping("/login")
-	public String login(@RequestParam("id")String id, @RequestParam("password")int password, HttpSession session) {
-		
-		UserVo authUser = userService.login(id, password);
+	public String login(UserVo userVo, HttpSession session) throws Exception{
+
+		userVo = userService.login(userVo);
 		
 		/* 세션에 로그인 회원 정보 저장 */
-		if(authUser != null) {
-			session.setAttribute("authUser", authUser);
-			return "/main/main";
-		}else {return "/user/loginForm";}
-
+		if(userVo != null) {
+			session.setAttribute("authUser", userVo);
+			return "redirect:/main";
+		}else {
+			return "/user/loginForm";
 		}
+
+	}
+
 
 }

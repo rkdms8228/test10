@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!--%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +17,22 @@
 				<a href="/main">MyBoard</a>
 			</h1>
 	
-			<!-- 로그인 전 -->
-			<ul>
-				<li><a href="/board" class="board">게시판</a></li>
-				<li><a href="/loginForm" class="btn_s log">로그인</a></li>
-			</ul>
-			<!-- 로그인 후 
-			<ul>
-				<li>님 안녕하세요 ﻿คʕ•ﻌ•ʔค</li>
-				<li><a href="/logout" class="btn_s">로그아웃</a></li>
-			</ul>
-			-->
+			<c:choose>
+				<c:when test="${empty authUser}">
+					<ul>
+						<!-- 로그인 전 -->
+						<li><a href="/board" class="board">게시판</a></li>
+						<li><a href="/loginForm" class="btn_s log">로그인</a></li>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<ul>
+						<!-- 로그인 후 -->
+						<li>${sessionScope.authUser.name} 님 안녕하세요 ﻿คʕ•ﻌ•ʔค </li>
+						<li><a href="/logout" class="btn_s">로그아웃</a></li>
+					</ul>
+				</c:otherwise>
+			</c:choose>
 		</div>
 
 	</div>

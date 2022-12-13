@@ -5,18 +5,21 @@ public class UserVo {
 	//필드
 	private int no;
 	private String id;
+	private String password;
 	private String name;
-	private int password;
 	
 	//생성자
 	public UserVo() {}
-	
-	public UserVo(int no, String id, String name, int password) {
+	public UserVo(String id, String password) {
+		this.id = id;
+		this.password = password;	
+	}
+	public UserVo(int no, String id, String password, String name) {
 		super();
 		this.no = no;
 		this.id = id;
-		this.name = name;
 		this.password = password;
+		this.name = name;	
 	}
 	
 	//메소드
@@ -32,18 +35,18 @@ public class UserVo {
 	public void setId(String id) {
 		this.id = id;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPassword() {
-		return password;
-	}
-	public void setPassword(int password) {
-		this.password = password;
-	}
-
+	
 
 }

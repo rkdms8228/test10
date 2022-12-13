@@ -12,9 +12,17 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public UserVo login(String id, int password) {
+	public UserVo login(UserVo userVo) throws Exception{
 
-		return userMapper.login(id, password);
+		/*
+		 * UserVo vv = new UserVo();
+		 * 
+		 * vv = userMapper.login(userVo);
+		 * 
+		 * System.out.print("id ::: " + vv.getId());
+		 */
+		
+		return userMapper.login(userVo);
 		
 	}
 

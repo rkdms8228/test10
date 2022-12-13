@@ -1,12 +1,12 @@
 package com.web.mapper;
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.web.vo.UserVo;
 
-@Repository("UserMapper")
+@Mapper
 public interface UserMapper {
 
-	public UserVo login(String id, int password);
+	public UserVo login(UserVo userVo) throws Exception;
 
 }

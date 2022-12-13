@@ -37,8 +37,7 @@
 						<label class="form-text" for="input-pass">PW</label>
 						<input type="password" id="input-pass" name="password" placeholder="비밀번호를 입력하세요.">
 					</div>
-					
-					
+										
 					<!-- 버튼 영역 -->
 					<div class="button-area">
 						<button type="submit" id="btn-submit">LOGIN</button>
